@@ -1,7 +1,11 @@
 # CloudReader_copy 声明
 
-- 参照github CloudReader
-- 项目地址: https://github.com/youlookwhat/CloudReader
+- 参照[CloudReader](https://github.com/youlookwhat/CloudReader)
+
+## 目的
+
+- 学习安卓MVVM-DataBinding架构
+- 练习安卓基础
 
 
 ## 更新日志
