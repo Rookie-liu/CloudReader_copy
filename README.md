@@ -11,7 +11,7 @@
 
 ## 鸣谢
 
-- 感谢[youlookwhat/CloudReader](https://github.com/youlookwhat/CloudReader)开运
+- 感谢[youlookwhat/CloudReader](https://github.com/youlookwhat/CloudReader)
 - 感谢小夏同学未来日子的帮助
 
 
