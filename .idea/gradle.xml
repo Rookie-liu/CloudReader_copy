@@ -9,6 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/http" />
+            <option value="$PROJECT_DIR$/xrecyclerview" />
+            <option value="$PROJECT_DIR$/zoomlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CloudReader_copy.iml" filepath="$PROJECT_DIR$/CloudReader_copy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/http/http.iml" filepath="$PROJECT_DIR$/http/http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" filepath="$PROJECT_DIR$/xrecyclerview/xrecyclerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zoomlibrary/zoomlibrary.iml" filepath="$PROJECT_DIR$/zoomlibrary/zoomlibrary.iml" />
     </modules>
   </component>
 </project>
