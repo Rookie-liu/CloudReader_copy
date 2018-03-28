@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_transition"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rookie.cloudreader_c.ui.TransitionActivity">
+        tools:context="com.example.rookie.cloudreader_c.ui.TransitionActivity">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_pic"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:id="@+id/tv_jump"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape_jump"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:text="跳过"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_defult_pic"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
+
+</layout>

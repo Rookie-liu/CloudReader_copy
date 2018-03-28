@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        tools:context="com.example.jingbin.cloudreader.MainActivity">
+        tools:context="com.example.rookie.cloudreader_c.MainActivity">
 
 
         <!--状态栏-->
