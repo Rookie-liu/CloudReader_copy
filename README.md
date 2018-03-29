@@ -20,7 +20,6 @@
 ## 鸣谢
 
 - 感谢[youlookwhat/CloudReader](https://github.com/youlookwhat/CloudReader)
-- 感谢小夏同学未来日子的帮助
-
+- 感谢[小夏](https://github.com/XiaMuYaoDQX)同学未来日子的帮助
 
 
