@@ -1,31 +1,32 @@
 package com.example.rookie.cloudreader_c;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.rookie.cloudreader_c.app.ConstantsImageUrl;
-import com.example.rookie.cloudreader_c.databinding.ActivityBaseBinding;
 import com.example.rookie.cloudreader_c.databinding.ActivityMainBinding;
 import com.example.rookie.cloudreader_c.databinding.NavHeaderMainBinding;
 import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxBusBaseMessage;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
+import com.example.rookie.cloudreader_c.ui.menu.NavDeedBackActivity;
+import com.example.rookie.cloudreader_c.ui.menu.NavDownloadActivity;
+import com.example.rookie.cloudreader_c.ui.menu.NavHomePageActivity;
 import com.example.rookie.cloudreader_c.utils.CommonUtils;
 import com.example.rookie.cloudreader_c.utils.ImgLoadUtil;
 import com.example.rookie.cloudreader_c.utils.PerfectClickListener;
@@ -35,7 +36,6 @@ import com.example.rookie.cloudreader_c.view.statusbar.StatusBarUtil;
 
 import java.util.ArrayList;
 
-import rx.Subscriber;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initId();
         initRxBus();
 
-        //TODO 这里getColor 报错...是不是utils 类些写的有错
-//        StatusBarUtil.setColorNoTranslucentForDrawerLayout(MainActivity.this, drawerLayout, CommonUtils.getColor(R.color.colorTheme));
-        StatusBarUtil.setColorNoTranslucentForDrawerLayout(MainActivity.this, drawerLayout, 123);
+        StatusBarUtil.setColorNoTranslucentForDrawerLayout(MainActivity.this, drawerLayout, CommonUtils.getColor(R.color.colorTheme));
+//        StatusBarUtil.setColorNoTranslucentForDrawerLayout(MainActivity.this, drawerLayout, 123);
         initContentFragment();
         initDrawerLayout();
         initListener();
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBinding.include.viewStatus.setLayoutParams(layoutParams);
     }
 
-    //初始化ID  TODO 但是为什么又的需要icnloud ? 是因为写的插件的原因艾玛
     private void initId() {
         drawerLayout = mBinding.drawerLayout;
         navView = mBinding.navView;
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = mBinding.include.toolbar;
         llTitleMenu = mBinding.include.llTitleMenu;
         vpContent = mBinding.include.vpContent;
-        fab.setVisibility(View.GONE);  // TODO 这里是吧什么隐藏了呢
+        fab.setVisibility(View.GONE);
 
         llTitleGank = mBinding.include.ivTitleGank;
         llTitleOne = mBinding.include.ivTitleOne;
@@ -102,18 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View headerView = navView.getHeaderView(0);
         bind = DataBindingUtil.bind(headerView);
         bind.setListener(this);
-        //TODO error 报错. 注释掉
-        //        bind.dayNightSwitch.setChecked(SPUtils.getNightMode());
+                bind.dayNightSwitch.setChecked(SPUtils.getNightMode());
 
         ImgLoadUtil.displayCircle(bind.ivAvatar, ConstantsImageUrl.IC_AVATAR);
         bind.llNavExit.setOnClickListener(this);
         bind.ivAvatar.setOnClickListener(this);
 
-        bind.llNavHomepage.setOnClickListener(this);
-        bind.llNavScanDownload.setOnClickListener(this);
-        bind.llNavDeedback.setOnClickListener(this);
-        bind.llNavAbout.setOnClickListener(this);
-        bind.llNavLogin.setOnClickListener(this);
+        bind.llNavHomepage.setOnClickListener(listener);
+        bind.llNavScanDownload.setOnClickListener(listener);
+        bind.llNavDeedback.setOnClickListener(listener);
+        bind.llNavAbout.setOnClickListener(listener);
+        bind.llNavLogin.setOnClickListener(listener);
     }
 
     // 绑定点击方法
@@ -142,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // TODO 这里解开注释提示不兼容类型
 //        ActionBar actionBar = getSupportActionBar();
 //        if (actionBar != null) {
-//            actionBar.setDisplayShowTitleEnabled(false);
+//            MainActivity.setDisplayShowTitleEnabled(false);
 //        }
         llTitleGank.setSelected(true);
         llTitleDou.setSelected(true);
@@ -158,11 +155,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mBinding.drawerLayout.postDelayed(() -> {
                 switch (v.getId()) {
                     case R.id.ll_nav_homepage:
-
+                        NavHomePageActivity.startHome(MainActivity.this); //主页
                         break;
                     case R.id.ll_nav_scan_download:
+                        NavDownloadActivity.start(MainActivity.this); // 扫码下载
                         break;
                     case R.id.ll_nav_deedback:
+                        NavDeedBackActivity.start(MainActivity.this);
                         break;
                     case R.id.ll_nav_about:
                         break;

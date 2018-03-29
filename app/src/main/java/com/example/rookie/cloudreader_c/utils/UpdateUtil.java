@@ -3,6 +3,7 @@ package com.example.rookie.cloudreader_c.utils;
 import android.app.Activity;
 import android.support.v7.app.AlertDialog;
 
+import com.example.rookie.cloudreader_c.BuildConfig;
 import com.example.rookie.cloudreader_c.bean.UpdateBean;
 import com.example.rookie.cloudreader_c.http.HttpClient;
 
@@ -47,14 +48,13 @@ public class UpdateUtil {
                     @Override
                     public void onNext(final UpdateBean updateBean) {
 
-//                        TODO 这里 BuildConfig没找到
-//                        if (Integer.valueOf(updateBean.getVersion()) <= BuildConfig.VERSION_CODE) {
-//                            if (isShowToast) {
-//                                ToastUtil.showToastLong("已是最新版本~");
-////                                Snackbar.make(activity.getWindow().getDecorView().findViewById(android.R.id.content), "已是最新版本! (*^__^*)", Snackbar.LENGTH_SHORT).show();
-//                            }
-//                            return;
-//                        }
+                        if (Integer.valueOf(updateBean.getVersion()) <= BuildConfig.VERSION_CODE) {
+                            if (isShowToast) {
+                                ToastUtil.showToastLong("已是最新版本~");
+//                                Snackbar.make(activity.getWindow().getDecorView().findViewById(android.R.id.content), "已是最新版本! (*^__^*)", Snackbar.LENGTH_SHORT).show();
+                            }
+                            return;
+                        }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                         // 返回无效

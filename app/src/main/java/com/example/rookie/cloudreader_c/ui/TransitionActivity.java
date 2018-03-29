@@ -40,10 +40,8 @@ public class TransitionActivity extends AppCompatActivity {
         int i= new Random().nextInt(ConstantsImageUrl.TRANSITION_URLS.length);
         // 获取启动图, 先显示默认启动图
 
-        //TODO error 这里报错
-//        mBinding.ivDefultPic.setImageDrawable(CommonUtils.getDrawable(R.drawable.img_transition_default));
+        mBinding.ivDefultPic.setImageDrawable(CommonUtils.getDrawable(R.drawable.img_transition_default));
 
-        //TODO 这个方法是进行图片请求的嘛?Glide 常用的图片加载的三方
         Glide.with(this)
                 .load(ConstantsImageUrl.TRANSITION_URLS[i])
                 .placeholder(R.drawable.img_transition_default)

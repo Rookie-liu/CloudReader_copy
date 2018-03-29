@@ -12,22 +12,23 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".app.CloudReaderApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        tools:replace="android:allowBackup"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+
+
          
+
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/MyScrollPage" >
-
-
-
-        </activity>
+            android:theme="@style/MyScrollPage" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -38,11 +39,22 @@
             android:theme="@style/ViewBigPicTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
+        <activity
+            android:name=".ui.menu.NavHomePageActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.menu.NavDownloadActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.menu.NavDeedBackActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity
+            android:name=".view.webview.WebViewActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
