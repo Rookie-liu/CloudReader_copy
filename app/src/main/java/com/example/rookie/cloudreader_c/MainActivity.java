@@ -1,6 +1,5 @@
 package com.example.rookie.cloudreader_c;
 
-import android.app.Fragment;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -24,15 +23,18 @@ import com.example.rookie.cloudreader_c.databinding.NavHeaderMainBinding;
 import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxBusBaseMessage;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
+import com.example.rookie.cloudreader_c.ui.menu.NavAboutActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavDeedBackActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavDownloadActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavHomePageActivity;
+import com.example.rookie.cloudreader_c.ui.one.OneFragment;
 import com.example.rookie.cloudreader_c.utils.CommonUtils;
 import com.example.rookie.cloudreader_c.utils.ImgLoadUtil;
 import com.example.rookie.cloudreader_c.utils.PerfectClickListener;
 import com.example.rookie.cloudreader_c.utils.SPUtils;
 import com.example.rookie.cloudreader_c.view.MyFragmentPagerAdapter;
 import com.example.rookie.cloudreader_c.view.statusbar.StatusBarUtil;
+import com.example.rookie.cloudreader_c.view.webview.WebViewActivity;
 
 import java.util.ArrayList;
 
@@ -124,8 +126,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 初始化加载三个页面. 放到一个 adapter里面
     private void initContentFragment() {
-        ArrayList<Fragment> mFragmentList = new ArrayList<>();
-//        mFragmentList.add(new OneFragment());
+        ArrayList<OneFragment> mFragmentList = new ArrayList<>();
+        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new OneFragment());
 //        mFragmentList.add(new GankFragment());
 //        mFragmentList.add(new BookFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
@@ -142,8 +146,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            MainActivity.setDisplayShowTitleEnabled(false);
 //        }
         llTitleGank.setSelected(true);
-        llTitleDou.setSelected(true);
-        llTitleOne.setSelected(true);
+        llTitleDou.setSelected(false);
+        llTitleOne.setSelected(false);
         vpContent.setCurrentItem(1);
     }
 
@@ -161,11 +165,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         NavDownloadActivity.start(MainActivity.this); // 扫码下载
                         break;
                     case R.id.ll_nav_deedback:
-                        NavDeedBackActivity.start(MainActivity.this);
+                        NavDeedBackActivity.start(MainActivity.this); // 问题反馈
                         break;
                     case R.id.ll_nav_about:
+                        NavAboutActivity.start(MainActivity.this); //关于
                         break;
                     case R.id.ll_nav_login:
+                        WebViewActivity.loadUrl(v.getContext(), "https://github.com/login", "登录GitHub账号");
+
                         break;
                     default:
                         break;
@@ -182,13 +189,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.ll_title_menu: // 开启菜单
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.iv_title_gank: //干货
+            case R.id.iv_title_gank:// 干货栏
+                if (vpContent.getCurrentItem() != 1) {//不然cpu会有损耗
+                    llTitleGank.setSelected(true);
+                    llTitleOne.setSelected(false);
+                    llTitleDou.setSelected(false);
+                    vpContent.setCurrentItem(1);
+                }
                 break;
-            case R.id.iv_title_one: // 电影
+            case R.id.iv_title_one:// 电影栏
+                if (vpContent.getCurrentItem() != 0) {
+                    llTitleOne.setSelected(true);
+                    llTitleGank.setSelected(false);
+                    llTitleDou.setSelected(false);
+                    vpContent.setCurrentItem(0);
+                }
                 break;
-            case R.id.iv_title_dou: // 书籍
+            case R.id.iv_title_dou:// 书籍栏
+                if (vpContent.getCurrentItem() != 2) {
+                    llTitleDou.setSelected(true);
+                    llTitleOne.setSelected(false);
+                    llTitleGank.setSelected(false);
+                    vpContent.setCurrentItem(2);
+                }
                 break;
             case R.id.iv_avatar: // 进入到github
+                WebViewActivity.loadUrl(v.getContext(), CommonUtils.getString(R.string.string_url_cloudreader), "CloudReader");
                 break;
             case R.id.ll_nav_exit:
                 finish();
