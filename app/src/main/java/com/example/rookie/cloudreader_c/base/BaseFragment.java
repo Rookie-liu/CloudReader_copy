@@ -169,7 +169,7 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment 
         }
         // 停止动画
         if (mAnimationDrawable.isRunning()) {
-            mAnimationDrawable.stop();
+            mAnimationDrawable.stop( );
         }
         if (mRefresh.getVisibility() != View.VISIBLE) {
             mRefresh.setVisibility(View.VISIBLE);
