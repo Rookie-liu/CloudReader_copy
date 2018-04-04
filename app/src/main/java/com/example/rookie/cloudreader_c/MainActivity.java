@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +24,7 @@ import com.example.rookie.cloudreader_c.databinding.NavHeaderMainBinding;
 import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxBusBaseMessage;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
+import com.example.rookie.cloudreader_c.ui.gank.GankFragment;
 import com.example.rookie.cloudreader_c.ui.menu.NavAboutActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavDeedBackActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavDownloadActivity;
@@ -126,11 +128,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 初始化加载三个页面. 放到一个 adapter里面
     private void initContentFragment() {
-        ArrayList<OneFragment> mFragmentList = new ArrayList<>();
+        ArrayList<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new OneFragment());
+        mFragmentList.add(new GankFragment());
         mFragmentList.add(new OneFragment());
-        mFragmentList.add(new OneFragment());
-//        mFragmentList.add(new GankFragment());
 //        mFragmentList.add(new BookFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         vpContent.setAdapter(adapter);
