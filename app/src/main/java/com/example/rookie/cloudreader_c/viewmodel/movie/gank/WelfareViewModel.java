@@ -18,7 +18,7 @@ import rx.Subscription;
  * Created by rookie on 2018/4/4.
  */
 
-public class WelfareViewModel extends ViewModel {
+public class    WelfareViewModel extends ViewModel {
 
     private final BaseFragment activity;
     private final GankOtherModel mModel;

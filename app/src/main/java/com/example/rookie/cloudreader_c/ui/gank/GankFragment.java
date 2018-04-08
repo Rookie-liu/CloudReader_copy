@@ -10,6 +10,7 @@ import com.example.rookie.cloudreader_c.base.BaseFragment;
 import com.example.rookie.cloudreader_c.databinding.FragmentGankBinding;
 import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
+import com.example.rookie.cloudreader_c.ui.gank.child.AndroidFragment;
 import com.example.rookie.cloudreader_c.ui.gank.child.WelfareFragment;
 import com.example.rookie.cloudreader_c.view.MyFragmentPagerAdapter;
 
@@ -59,7 +60,7 @@ public class GankFragment extends BaseFragment<FragmentGankBinding> {
         mFragments.add(new WelfareFragment());
         mFragments.add(new WelfareFragment());
         mFragments.add(new WelfareFragment());
-        mFragments.add(new WelfareFragment());
+        mFragments.add(AndroidFragment.newInstance("Android"));  // 大安卓的fragment
     }
     /**
      * 媒体推荐点击更多跳转
