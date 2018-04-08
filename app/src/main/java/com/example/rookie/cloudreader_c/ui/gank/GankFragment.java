@@ -12,6 +12,7 @@ import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
 import com.example.rookie.cloudreader_c.ui.gank.child.AndroidFragment;
 import com.example.rookie.cloudreader_c.ui.gank.child.CustomFragment;
+import com.example.rookie.cloudreader_c.ui.gank.child.EverydayFragment;
 import com.example.rookie.cloudreader_c.ui.gank.child.WelfareFragment;
 import com.example.rookie.cloudreader_c.view.MyFragmentPagerAdapter;
 
@@ -58,7 +59,7 @@ public class GankFragment extends BaseFragment<FragmentGankBinding> {
         mTitleList.add("福利");
         mTitleList.add("干货定制");
         mTitleList.add("大安卓");
-        mFragments.add(new WelfareFragment());
+        mFragments.add(new EverydayFragment());
         mFragments.add(new WelfareFragment());
         mFragments.add(new CustomFragment());
         mFragments.add(AndroidFragment.newInstance("Android"));  // 大安卓的fragment
