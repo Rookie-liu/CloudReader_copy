@@ -58,7 +58,8 @@
         <activity
             android:name=".ui.menu.NavAboutActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.one.OneMovieDetailActivity"></activity>
+        <activity android:name=".ui.one.OneMovieDetailActivity" />
+        <activity android:name=".ui.book.child.BookDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -44,6 +44,7 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
     private HeaderWanAndroidBinding androidBinding;
     private WanAndroidViewModel viewModel;
 
+
     @Override
     public int setContent() {
         return R.layout.fragment_wan_android;
@@ -55,7 +56,7 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
         activity = (MainActivity) context;
     }
 
-    public static WanAndroidFragment newInstance(String param1) {
+    public static  WanAndroidFragment newInstance(String param1) {
         WanAndroidFragment fragment = new WanAndroidFragment();
         Bundle args = new Bundle();
         args.putString(TYPE, param1);
@@ -64,12 +65,13 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mType = getArguments().getString(TYPE);
         }
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -77,29 +79,27 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
         showContentView();
         viewModel = new WanAndroidViewModel(this);
         viewModel.setNavigator(this);
-        initRefreshView();
-
-        // 准备就绪
+        initRefresView();
+        //准备就绪
         mIsPrepared = true;
-        /**
-         * 因为启动时先走loadData()再走onActivityCreated，
-         * 所以此处要额外调用load(),不然最初不会加载内容
-         */
         loadData();
+
     }
 
-    private void initRefreshView() {
+
+    private void initRefresView() {
         bindingView.srlBook.setColorSchemeColors(CommonUtils.getColor(R.color.colorTheme));
         bindingView.srlBook.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 bindingView.srlBook.postDelayed(() -> {
+
                     viewModel.setPage(0);
                     loadCustomData();
                 }, 1000);
-
             }
         });
+
         bindingView.xrvBook.setLayoutManager(new LinearLayoutManager(getActivity()));
         bindingView.xrvBook.setPullRefreshEnabled(false);
         bindingView.xrvBook.clearHeader();
@@ -124,9 +124,6 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
         });
     }
 
-    /**
-     * 设置banner图
-     */
     @Override
     public void showBannerView(ArrayList<String> bannerImages, ArrayList<String> mBannerTitle, List<WanAndroidBannerBean.DataBean> result) {
         androidBinding.banner.setVisibility(View.VISIBLE);
@@ -166,7 +163,6 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
 
         mIsFirst = false;
     }
-
     @Override
     public void refreshAdapter(HomeListBean bean) {
         mAdapter.addAll(bean.getData().getDatas());
@@ -184,6 +180,8 @@ public class WanAndroidFragment extends BaseFragment<FragmentWanAndroidBinding> 
         showContentView();
         bindingView.srlBook.setRefreshing(false);
     }
+
+
 
     @Override
     protected void loadData() {
