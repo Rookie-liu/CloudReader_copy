@@ -24,6 +24,7 @@ import com.example.rookie.cloudreader_c.databinding.NavHeaderMainBinding;
 import com.example.rookie.cloudreader_c.http.rx.RxBus;
 import com.example.rookie.cloudreader_c.http.rx.RxBusBaseMessage;
 import com.example.rookie.cloudreader_c.http.rx.RxCodeConstants;
+import com.example.rookie.cloudreader_c.ui.book.BookFragment;
 import com.example.rookie.cloudreader_c.ui.gank.GankFragment;
 import com.example.rookie.cloudreader_c.ui.menu.NavAboutActivity;
 import com.example.rookie.cloudreader_c.ui.menu.NavDeedBackActivity;
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new OneFragment());
         mFragmentList.add(new GankFragment());
-        mFragmentList.add(new OneFragment());
+        mFragmentList.add(new BookFragment());
 //        mFragmentList.add(new BookFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         vpContent.setAdapter(adapter);

@@ -62,6 +62,12 @@ public class EverydayAdapter extends BaseRecyclerViewAdapter<List<AndroidBean>> 
     }
 
 
+    /**
+     * 添加三个类型条目
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
@@ -76,6 +82,9 @@ public class EverydayAdapter extends BaseRecyclerViewAdapter<List<AndroidBean>> 
         }
     }
 
+    /**
+     * 有标题的 Cell
+     */
     private class TitleHolder extends BaseRecyclerViewHolder<List<AndroidBean>, ItemEverydayTitleBinding> {
 
         TitleHolder(ViewGroup parent, int title) {
@@ -129,6 +138,9 @@ public class EverydayAdapter extends BaseRecyclerViewAdapter<List<AndroidBean>> 
         }
     }
 
+    /**
+     * 只有一张图面的 Cell
+     */
     private class OneHolder extends BaseRecyclerViewHolder<List<AndroidBean>, ItemEverydayOneBinding> {
 
         OneHolder(ViewGroup parent, int title) {
@@ -158,6 +170,9 @@ public class EverydayAdapter extends BaseRecyclerViewAdapter<List<AndroidBean>> 
         }
     }
 
+    /**
+     * 两张图片的Cell
+     */
     private class TwoHolder extends BaseRecyclerViewHolder<List<AndroidBean>, ItemEverydayTwoBinding> {
 
         TwoHolder(ViewGroup parent, int title) {
@@ -178,6 +193,9 @@ public class EverydayAdapter extends BaseRecyclerViewAdapter<List<AndroidBean>> 
         }
     }
 
+    /**
+     * 三张图片 Cell
+     */
     private class ThreeHolder extends BaseRecyclerViewHolder<List<AndroidBean>, ItemEverydayThreeBinding> {
 
         ThreeHolder(ViewGroup parent, int title) {

@@ -50,6 +50,9 @@ public class EverydayViewModel extends ViewModel {
         mEverydayModel.setData(getTodayTime().get(0), getTodayTime().get(1), getTodayTime().get(2));
     }
 
+    /**
+     * 展示列表数据
+     */
     private void showRecyclerViewData() {
         mEverydayModel.showRecyclerViewData(new RequestImpl() {
             @Override
@@ -104,6 +107,9 @@ public class EverydayViewModel extends ViewModel {
         }
     }
 
+    /**
+     * 暂时轮播图数据
+     */
     private void showBanncerPage() {
         mEverydayModel.showBanncerPage(new RequestImpl() {
             @Override

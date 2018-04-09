@@ -48,15 +48,15 @@ public class EverydayFragment extends BaseFragment<FragmentEverydayBinding> impl
     private static final String TAG = "EverydayFragment";
     private HeaderItemEverydayBinding mHeaderBinding;
     private FooterItemEverydayBinding mFooterBinding;
-    private View mHeaderView;
-    private View mFooterView;
-    private EverydayAdapter mEverydayAdapter;
+    private View mHeaderView; // 头部的view
+    private View mFooterView;  // 底部view
+    private EverydayAdapter mEverydayAdapter;  // 适配器
     private boolean mIsPrepared = false;
     private boolean mIsFirst = true;
     // 是否是上一天的请求
     private boolean isOldDayRequest;
     private RotateAnimation animation;
-    private EverydayViewModel everydayViewModel;
+    private EverydayViewModel everydayViewModel;  //viewmodel 数据请求方面
 
 
     @Override
