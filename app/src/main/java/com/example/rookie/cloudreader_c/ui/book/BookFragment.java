@@ -9,6 +9,7 @@ import com.example.rookie.cloudreader_c.R;
 import com.example.rookie.cloudreader_c.base.BaseFragment;
 import com.example.rookie.cloudreader_c.databinding.FragmentBookBinding;
 import com.example.rookie.cloudreader_c.ui.book.child.JokeFragment;
+import com.example.rookie.cloudreader_c.ui.book.child.WanAndroidFragment;
 import com.example.rookie.cloudreader_c.view.MyFragmentPagerAdapter;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class BookFragment extends BaseFragment<FragmentBookBinding> {
         mTitleList.add("玩安卓");
         mTitleList.add("书籍");
         mTitleList.add("段子");
-        mFragemnts.add(JokeFragment.newInstance("段子"));
+        mFragemnts.add(WanAndroidFragment.newInstance("玩安卓"));
         mFragemnts.add(JokeFragment.newInstance("段子"));
         mFragemnts.add(JokeFragment.newInstance("段子"));
 
